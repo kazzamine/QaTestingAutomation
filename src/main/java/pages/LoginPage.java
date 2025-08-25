@@ -31,6 +31,7 @@ public class LoginPage {
     }
 
     public void loginFeature(String usernameText,String passwordText) {
+        WaitHelper.pause(2);
         enterUsername(usernameText);
         enterPassword(passwordText);
         WaitHelper.pause(2);

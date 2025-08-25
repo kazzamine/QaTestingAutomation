@@ -32,4 +32,8 @@ public class InventoryPage {
         WebElement shoppingBadge=wait.waitForVisibility(By.className("shopping_cart_badge"));
         return shoppingBadge.isDisplayed();
     }
+    public boolean isOnCartPage() {
+        return driver.getCurrentUrl().contains("cart");
+    }
+
 }
