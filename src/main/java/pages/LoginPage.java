@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.util.PropertiesUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,10 +32,18 @@ public class LoginPage {
     }
 
     public void loginFeature(String usernameText,String passwordText) {
-        WaitHelper.pause(2);
         enterUsername(usernameText);
         enterPassword(passwordText);
-        WaitHelper.pause(2);
         clickLogin();
+    }
+
+    public boolean isUserLocked(){
+        WebElement errorMsg= wait.waitForVisibility(By.cssSelector("error-message-container error"));
+        return errorMsg.isDisplayed();
+    }
+    public boolean isErrorTextEqual(String textToCheck){
+        WebElement errorMsg=wait.waitForVisibility(By.cssSelector("[data-test='error']"));
+        String errorText=errorMsg.getText().toLowerCase().trim();
+        return errorText.contains(textToCheck.toLowerCase().trim());
     }
 }

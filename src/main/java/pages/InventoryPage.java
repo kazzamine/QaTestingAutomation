@@ -18,11 +18,9 @@ public class InventoryPage {
     public void addItemToCart(String itemname){
         String formattedId=itemname.toLowerCase().replaceAll(" ","-");
         By addToCartButton = By.id("add-to-cart-" + formattedId);
-//        driver.findElement(addToCartButton).click();
         wait.waitForClickable(addToCartButton).click();
     }
 
-    //shopping_cart_link
     public void openCart(){
         By cartBtn=By.className("shopping_cart_link");
         wait.waitForClickable(cartBtn).click();
@@ -31,9 +29,6 @@ public class InventoryPage {
     public boolean isCartBadgeVisible(){
         WebElement shoppingBadge=wait.waitForVisibility(By.className("shopping_cart_badge"));
         return shoppingBadge.isDisplayed();
-    }
-    public boolean isOnCartPage() {
-        return driver.getCurrentUrl().contains("cart");
     }
 
 }
